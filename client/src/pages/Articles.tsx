@@ -124,7 +124,7 @@ export const Articles: FC = () => {
         <>
           {articles.data.items.length === 0 ? (
             <h2 className={styles["no-article-title"]}>
-              Article does not exists
+              기사가 존재하지 않습니다
             </h2>
           ) : (
             <>
