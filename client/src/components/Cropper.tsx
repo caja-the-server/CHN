@@ -1,4 +1,4 @@
-import "cropperjs/dist/cropper.css";
+// import "cropperjs/dist/cropper.css";
 
 import { ComponentProps, FC } from "react";
 import ReactCropper from "react-cropper";

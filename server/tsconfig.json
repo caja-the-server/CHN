@@ -7,15 +7,16 @@
     "moduleResolution": "bundler",
     "moduleDetection": "force",
     "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
     "paths": {
       "@*": ["./src/*"]
     },
     "outDir": "./dist",
     "allowJs": false,
     "isolatedModules": true,
-    "esModuleInterop": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true
   },
