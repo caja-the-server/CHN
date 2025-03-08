@@ -1,6 +1,8 @@
-import styles from "../styles/Articles.module.scss";
+import styles from "./styles.module.scss";
 
 import { Pagination } from "@mui/material";
+import { ContentLessArticle, getArticles } from "@services/article-service";
+import { getTimeData } from "@utils/time";
 import {
   ChangeEvent,
   FC,
@@ -11,8 +13,6 @@ import {
   useState,
 } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { ContentLessArticle, getArticles } from "../services/article-service";
-import { getTimeData } from "../utils/time";
 
 type ArticleProps = {
   article: ContentLessArticle;
@@ -82,7 +82,7 @@ export const Articles: FC = () => {
   >({ state: "UNSET" });
 
   const handlePageChange = useCallback(
-    (event: ChangeEvent<unknown>, value: number) => {
+    (_: ChangeEvent<unknown>, value: number) => {
       navigate(
         `/articles?` +
           new URLSearchParams({

@@ -1,5 +1,13 @@
-import styles from "../styles/ThumbnailInput.module.scss";
+import styles from "./styles.module.scss";
 
+import { TextFieldChangeEvent } from "@/types/mui";
+import { Cropper } from "@components/Cropper";
+import { GeneralTextField } from "@components/GeneralTextField";
+import {
+  postThumbnail,
+  THUMBNAIL_SERVICE_URL,
+} from "@services/thumbnail-service";
+import { renderBlobToCanvas } from "@utils/rander-blob-to-canvas";
 import {
   ChangeEvent,
   Dispatch,
@@ -11,14 +19,6 @@ import {
   useRef,
   useState,
 } from "react";
-import {
-  postThumbnail,
-  THUMBNAIL_SERVICE_URL,
-} from "../services/thumbnail-service";
-import { TextFieldChangeEvent } from "../types/mui";
-import { renderBlobToCanvas } from "../utils/rander-blob-to-canvas";
-import { Cropper } from "./Cropper";
-import { GeneralTextField } from "./GeneralTextField";
 
 export type ThumbnailRef = {
   name: string | null;

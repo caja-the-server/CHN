@@ -1,10 +1,10 @@
-import styles from "../styles/SignInUp.module.scss";
+import styles from "../styles.module.scss";
 
+import { TextFieldChangeEvent } from "@/types/mui";
+import { GeneralTextField } from "@components/GeneralTextField";
+import { signup, verifyAuthToken } from "@services/auth-service";
 import { FC, FormEvent, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { GeneralTextField } from "../components/GeneralTextField";
-import { signup, verifyAuthToken } from "../services/auth-service";
-import { TextFieldChangeEvent } from "../types/mui";
 
 export const Signup: FC = () => {
   const navigate = useNavigate();

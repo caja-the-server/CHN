@@ -1,12 +1,12 @@
-import styles from "../styles/Header.module.scss";
+import styles from "./styles.module.scss";
 
+import { Logo } from "@components/Logo";
+import { CategoryContext } from "@contexts/category-context";
+import { CurrentUserContext } from "@contexts/current-user-context";
+import { signout } from "@services/auth-service";
+import { getDateTime } from "@utils/time";
 import { FC, useCallback, useContext, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { CategoryContext } from "../contexts/category-context";
-import { CurrentUserContext } from "../contexts/current-user-context";
-import { signout } from "../services/auth-service";
-import { getDateTime } from "../utils/time";
-import { Logo } from "./Logo";
 
 export const Header: FC = () => {
   const currentUser = useContext(CurrentUserContext);

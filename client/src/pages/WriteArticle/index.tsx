@@ -1,7 +1,19 @@
-import styles from "../../styles/WriteArticle.module.scss";
-import "../../styles/WriteArticle.quill.scss";
+import styles from "./styles.module.scss";
+import "./styles.scss";
 
+import { TextFieldChangeEvent } from "@/types/mui";
+import { GeneralTextField } from "@components/GeneralTextField";
+import { QuillEditor } from "@components/QuillEditor";
+import { ThumbnailInput, ThumbnailRef } from "@components/ThumbnailInput";
+import { CategoryContext } from "@contexts/category-context";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import {
+  getArticle,
+  patchArticle,
+  postArticle,
+} from "@services/article-service";
+import { postImage } from "@services/image-service";
+import { renderBlobToCanvas } from "@utils/rander-blob-to-canvas";
 import Quill, { Module } from "quill";
 import { BaseTooltip } from "quill/themes/base";
 import SnowTheme from "quill/themes/snow";
@@ -16,18 +28,6 @@ import {
   useState,
 } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { GeneralTextField } from "../../components/GeneralTextField";
-import { QuillEditor } from "../../components/QuillEditor";
-import { ThumbnailInput, ThumbnailRef } from "../../components/ThumbnailInput";
-import { CategoryContext } from "../../contexts/category-context";
-import {
-  getArticle,
-  patchArticle,
-  postArticle,
-} from "../../services/article-service";
-import { postImage } from "../../services/image-service";
-import { TextFieldChangeEvent } from "../../types/mui";
-import { renderBlobToCanvas } from "../../utils/rander-blob-to-canvas";
 
 function quillImageHandler(this: Module) {
   const quill = this.quill;
@@ -42,7 +42,7 @@ function quillImageHandler(this: Module) {
   input.type = "file";
   input.accept = "image/*";
   input.style.display = "block";
-  input.onchange = async (event: Event) => {
+  input.onchange = async (_: Event) => {
     const file = input.files!.item(0);
     input.files = null;
     if (file === null) {
@@ -228,7 +228,7 @@ export const WriteArticle: FC = () => {
   }, [category, title, subtitle, override, navigate]);
 
   const handleCategoryChange = useCallback(
-    (event: MouseEvent<HTMLElement>, value: any) => {
+    (_: MouseEvent<HTMLElement>, value: any) => {
       if (value !== null) {
         setCategory(value);
       }

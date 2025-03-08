@@ -1,30 +1,30 @@
 import "normalize.css";
-import "./styles/global.scss";
+import "./styles.scss";
 
-import { createTheme, ThemeProvider } from "@mui/material";
-import { FC, useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   CategoryContext,
   CategoryContextData,
-} from "./contexts/category-context";
+} from "@contexts/category-context";
 import {
   CurrentUserContext,
   CurrentUserContextData,
-} from "./contexts/current-user-context";
-import { Layout } from "./Layout";
-import { ViewArticle } from "./pages/article/ViewArticle";
-import { WriteArticle } from "./pages/article/WriteArticle";
-import { Articles } from "./pages/Articles";
-import { Home } from "./pages/Home";
-import { MyAccount } from "./pages/MyAccount";
-import { MyArticles } from "./pages/MyArticles";
-import { NotFound } from "./pages/NotFound";
-import { Signin } from "./pages/Signin";
-import { Signup } from "./pages/Signup";
-import { User } from "./pages/User";
-import { getCurrentUser } from "./services/auth-service";
-import { getCategories } from "./services/category-service";
+} from "@contexts/current-user-context";
+import { createTheme, ThemeProvider } from "@mui/material";
+import { Articles } from "@pages/Articles";
+import { Home } from "@pages/Home";
+import { Layout } from "@pages/Layout";
+import { MyAccount } from "@pages/MyAccount";
+import { MyArticles } from "@pages/MyArticles";
+import { NotFound } from "@pages/NotFound";
+import { Signin } from "@pages/Sign/Signin";
+import { Signup } from "@pages/Sign/Signup";
+import { User } from "@pages/User";
+import { ViewArticle } from "@pages/ViewArticle";
+import { WriteArticle } from "@pages/WriteArticle";
+import { getCurrentUser } from "@services/auth-service";
+import { getCategories } from "@services/category-service";
+import { FC, useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const muiTheme = createTheme({
   typography: { button: { textTransform: "none" } },

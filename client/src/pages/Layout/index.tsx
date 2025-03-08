@@ -1,8 +1,8 @@
-import styles from "./styles/Layout.module.scss";
+import styles from "./styles.module.scss";
 
+import { Header } from "@components/Header";
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
-import { Header } from "./components/Header";
 
 export const Layout: FC = () => {
   return (

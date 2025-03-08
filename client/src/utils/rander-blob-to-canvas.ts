@@ -1,7 +1,5 @@
 export async function renderBlobToCanvas(
-  blob: Blob,
-  type?: string,
-  quality?: number
+  blob: Blob
 ): Promise<HTMLCanvasElement> {
   return await new Promise<HTMLCanvasElement>((resolve, reject) => {
     const reader = new FileReader();

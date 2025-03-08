@@ -1,20 +1,18 @@
-@use "fonts" as fonts;
-
-.title {
-  @include fonts.lexend();
-}
+@use "../../styles/fonts" as fonts;
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 0.4em;
-  width: 400px;
+  gap: 1em;
+  width: 100%;
 }
 
-.submit {
+.submit-button {
   @include fonts.inter();
+  align-self: flex-end;
   border-radius: 5px;
   background-color: var(--primary-color);
-  padding: 0.5em;
+  padding: 1em 2em;
+  width: max-content;
   color: var(--background-color);
 }

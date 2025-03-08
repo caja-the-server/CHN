@@ -1,13 +1,13 @@
-import styles from "../../styles/ViewArticle.module.scss";
-import "../../styles/ViewArticle.quill.scss";
+import styles from "./styles.module.scss";
+import "./styles.scss";
 
+import { QuillEditor } from "@components/QuillEditor";
+import { NotFound } from "@pages/NotFound";
+import { Article, getArticle } from "@services/article-service";
+import { getTimeData } from "@utils/time";
 import Quill from "quill";
 import { FC, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { QuillEditor } from "../../components/QuillEditor";
-import { Article, getArticle } from "../../services/article-service";
-import { getTimeData } from "../../utils/time";
-import { NotFound } from "../NotFound";
 
 const quillModules = {
   toolbar: false,
