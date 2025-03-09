@@ -1,12 +1,35 @@
-@use "../../styles/fonts" as fonts;
+@use "@styles/fonts" as fonts;
 
-.article-container {
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 0 20%;
+}
+
+.event-container {
+  .contents {
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 1em;
+
+    .event {
+      width: 33.33%;
+    }
+  }
+
+  .pages {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.main-container {
   display: grid;
-  position: relative;
   grid-template-columns: 12fr 1px 8fr;
   gap: 0.5em;
   box-sizing: border-box;
-  width: 100%;
 
   & > * {
     grid-column: span 1;
@@ -80,21 +103,4 @@
     color: var(--secondary-color);
     font-size: 0.8em;
   }
-}
-
-@mixin event-panel() {
-  position: absolute;
-  width: 300px;
-}
-
-$event-panel-offset: 1em;
-
-.left-event-panel {
-  @include event-panel();
-  right: calc(100% + $event-panel-offset);
-}
-
-.right-event-panel {
-  @include event-panel();
-  left: calc(100% + $event-panel-offset);
 }

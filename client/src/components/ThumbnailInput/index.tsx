@@ -7,7 +7,7 @@ import {
   postThumbnail,
   THUMBNAIL_SERVICE_URL,
 } from "@services/thumbnail-service";
-import { renderBlobToCanvas } from "@utils/rander-blob-to-canvas";
+import { renderBlobToCanvas } from "@utils/render-blob-to-canvas";
 import {
   ChangeEvent,
   Dispatch,

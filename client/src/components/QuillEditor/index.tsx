@@ -2,7 +2,7 @@ import "quill/dist/quill.bubble.css";
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.snow.css";
 
-import katex from "katex";
+import "katex";
 import Quill, { QuillOptions } from "quill";
 import {
   forwardRef,
@@ -11,8 +11,6 @@ import {
   useRef,
   useState,
 } from "react";
-
-window.katex = katex;
 
 type Props = {
   theme: "snow" | "bubble";

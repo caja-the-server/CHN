@@ -1,18 +1,42 @@
-@use "../../styles/fonts" as fonts;
+@use "@styles/fonts" as fonts;
 
 .container {
   @include fonts.roboto-slab();
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 0.8em;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .time {
-  display: block;
-  margin-left: auto;
   width: max-content;
   color: var(--secondary-color);
   font-size: 0.8em;
+}
+
+.user-nav {
+  flex-shrink: 0;
+
+  .button {
+    @include fonts.malgun-gothic();
+    display: inline-block;
+    align-content: center;
+    padding: 0 0.5em;
+    height: 1em;
+    font-size: 0.8em;
+  }
+}
+
+.mid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 0 10%;
 }
 
 .headline {
@@ -57,10 +81,6 @@
 .category-nav {
   margin: 0 auto;
   width: max-content;
-}
-
-.user-nav {
-  flex-shrink: 0;
 }
 
 .nav-button {

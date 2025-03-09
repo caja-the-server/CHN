@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 import "./styles.scss";
 
 import { QuillEditor } from "@components/QuillEditor";
-import { NotFound } from "@pages/NotFound";
+import { NotFound } from "@pages/404";
 import { Article, getArticle } from "@services/article-service";
 import { getTimeData } from "@utils/time";
 import Quill from "quill";

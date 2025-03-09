@@ -13,7 +13,7 @@ import {
   postArticle,
 } from "@services/article-service";
 import { postImage } from "@services/image-service";
-import { renderBlobToCanvas } from "@utils/rander-blob-to-canvas";
+import { renderBlobToCanvas } from "@utils/render-blob-to-canvas";
 import Quill, { Module } from "quill";
 import { BaseTooltip } from "quill/themes/base";
 import SnowTheme from "quill/themes/snow";

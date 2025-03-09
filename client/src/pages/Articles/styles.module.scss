@@ -1,4 +1,4 @@
-@use "../../styles/fonts" as fonts;
+@use "@styles/fonts" as fonts;
 
 .no-article-title {
   @include fonts.lexend();
@@ -10,7 +10,7 @@
   gap: 0.5em;
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 60%;
   list-style: none;
 }
 

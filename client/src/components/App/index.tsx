@@ -1,6 +1,7 @@
 import "normalize.css";
 import "./styles.scss";
 
+import { Layout } from "@components/Layout";
 import {
   CategoryContext,
   CategoryContextData,
@@ -10,17 +11,16 @@ import {
   CurrentUserContextData,
 } from "@contexts/current-user-context";
 import { createTheme, ThemeProvider } from "@mui/material";
-import { Articles } from "@pages/Articles";
-import { Home } from "@pages/Home";
-import { Layout } from "@pages/Layout";
-import { MyAccount } from "@pages/MyAccount";
-import { MyArticles } from "@pages/MyArticles";
-import { NotFound } from "@pages/NotFound";
-import { Signin } from "@pages/Sign/Signin";
-import { Signup } from "@pages/Sign/Signup";
-import { User } from "@pages/User";
-import { ViewArticle } from "@pages/ViewArticle";
-import { WriteArticle } from "@pages/WriteArticle";
+import { Home } from "@pages";
+import { NotFound } from "@pages/404";
+import { Articles } from "@pages/articles";
+import { ViewArticle } from "@pages/articles/[uid]";
+import { WriteArticle } from "@pages/articles/write";
+import { MyAccount } from "@pages/myaccount";
+import { MyArticles } from "@pages/myarticles";
+import { Signin } from "@pages/signin";
+import { Signup } from "@pages/signup";
+import { User } from "@pages/user";
 import { getCurrentUser } from "@services/auth-service";
 import { getCategories } from "@services/category-service";
 import { FC, useEffect, useState } from "react";

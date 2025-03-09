@@ -1,6 +1,5 @@
 {
   "name": "chn_client",
-  "version": "1.1.1",
   "private": true,
   "type": "module",
   "proxy": "http://localhost:3001",
@@ -15,7 +14,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.4.7",
     "classnames": "^2.5.1",
-    "cropperjs": "^2.0.0",
+    "cropperjs": "^1.6.2",
     "katex": "^0.16.21",
     "normalize.css": "^8.0.1",
     "quill": "^2.0.3",

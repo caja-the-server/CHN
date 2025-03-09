@@ -1,4 +1,4 @@
-import styles from "../styles.module.scss";
+import styles from "../signin-signup-shared.module.scss";
 
 import { TextFieldChangeEvent } from "@/types/mui";
 import { GeneralTextField } from "@components/GeneralTextField";
