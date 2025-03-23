@@ -13,9 +13,9 @@ import {
 import { createTheme, ThemeProvider } from "@mui/material";
 import { Home } from "@pages";
 import { NotFound } from "@pages/404";
-import { Articles } from "@pages/articles";
-import { ViewArticle } from "@pages/articles/[uid]";
-import { WriteArticle } from "@pages/articles/write";
+import { Articles } from "@pages/article";
+import { ViewArticle } from "@pages/article/[uid]";
+import { WriteArticle } from "@pages/article/write";
 import { MyAccount } from "@pages/myaccount";
 import { MyArticles } from "@pages/myarticles";
 import { Signin } from "@pages/signin";

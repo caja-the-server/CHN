@@ -3,10 +3,15 @@ import "./styles.scss";
 
 import { QuillEditor } from "@components/QuillEditor";
 import { NotFound } from "@pages/404";
-import { Article, getArticle } from "@services/article-service";
+import {
+  Article,
+  dislikeAritlce,
+  getArticle,
+  likeAritlce,
+} from "@services/article-service";
 import { getTimeData } from "@utils/time";
 import Quill from "quill";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useCallback, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const quillModules = {
@@ -21,6 +26,7 @@ export const ViewArticle: FC = () => {
     | { state: "NOT_FOUND" }
     | { state: "SET"; data: Article };
   const [article, setArticle] = useState<ArticleState>({ state: "UNSET" });
+  const [uid, setUid] = useState<number>();
 
   const quillRef = useRef<Quill>(null);
 
@@ -37,6 +43,8 @@ export const ViewArticle: FC = () => {
         setArticle({ state: "NOT_FOUND" });
         return;
       }
+
+      setUid(uid);
 
       try {
         const article = await getArticle(uid);
@@ -56,6 +64,43 @@ export const ViewArticle: FC = () => {
     }
     quillRef.current.setContents(JSON.parse(article.data.content).ops);
   }, [article]);
+
+  const handleLikeButtonClick = useCallback(async () => {
+    const reactedArticlesKey = "reactedArticles";
+    const reactedArticles = JSON.parse(
+      localStorage.getItem(reactedArticlesKey) ?? "[]"
+    ) as number[];
+    if (reactedArticles.includes(uid!)) {
+      return;
+    }
+    await likeAritlce(uid!);
+    reactedArticles.push(uid!);
+    localStorage.setItem(reactedArticlesKey, JSON.stringify(reactedArticles));
+    try {
+      const article = await getArticle(uid!);
+      setArticle({ state: "SET", data: article });
+    } catch {
+      setArticle({ state: "NOT_FOUND" });
+    }
+  }, [uid]);
+  const handleDislikeButtonClick = useCallback(async () => {
+    const reactedArticlesKey = "reactedArticles";
+    const reactedArticles = JSON.parse(
+      localStorage.getItem(reactedArticlesKey) ?? "[]"
+    ) as number[];
+    if (reactedArticles.includes(uid!)) {
+      return;
+    }
+    await dislikeAritlce(uid!);
+    reactedArticles.push(uid!);
+    localStorage.setItem(reactedArticlesKey, JSON.stringify(reactedArticles));
+    try {
+      const article = await getArticle(uid!);
+      setArticle({ state: "SET", data: article });
+    } catch {
+      setArticle({ state: "NOT_FOUND" });
+    }
+  }, [uid]);
 
   switch (article.state) {
     case "UNSET":
@@ -96,6 +141,20 @@ export const ViewArticle: FC = () => {
                 modules={quillModules}
               />
             </main>
+            <footer className={styles["footer"]}>
+              <button
+                className={styles["like-button"]}
+                onClick={handleLikeButtonClick}
+              >
+                <span>좋아요 {article.data.likeCount}</span>
+              </button>
+              <button
+                className={styles["dislike-button"]}
+                onClick={handleDislikeButtonClick}
+              >
+                <span>싫어요 {article.data.dislikeCount}</span>
+              </button>
+            </footer>
           </article>
         </>
       );

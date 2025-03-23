@@ -1,11 +1,7 @@
-import { NODE_ENV } from "@utils/node-env";
 import dotenv from "dotenv";
 import fs from "fs/promises";
 import path from "path";
 import { z } from "zod";
-
-const developmentEnvPath = path.resolve(".env.development");
-const productionEnvPath = path.resolve(".env.production");
 
 const envSchema = z
   .object({
@@ -28,10 +24,9 @@ const envSchema = z
   .readonly();
 
 export const env = await (async () => {
-  const envPath =
-    NODE_ENV === "development" ? developmentEnvPath : productionEnvPath;
+  const envPath = ".env";
   try {
-    const rawEnv = await fs.readFile(envPath, "utf8");
+    const rawEnv = await fs.readFile(".env", "utf8");
     const parsedEnv = dotenv.parse(rawEnv);
     try {
       return await envSchema.parseAsync(parsedEnv);

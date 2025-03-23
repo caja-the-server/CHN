@@ -13,6 +13,8 @@ export type Article = {
   title: string;
   subtitle: string;
   content: string;
+  likeCount: number;
+  dislikeCount: number;
   createdAt: string;
   updatedAt: string;
 };
@@ -98,6 +100,22 @@ export async function patchArticle(
 
 export async function deleteArticle(uid: number): Promise<void> {
   const response = await fetch(`/api/articles/${uid}`, { method: "DELETE" });
+  if (!response.ok) {
+    return Promise.reject();
+  }
+}
+
+export async function likeAritlce(uid: number): Promise<void> {
+  const response = await fetch(`/api/articles/${uid}/like`, { method: "POST" });
+  if (!response.ok) {
+    return Promise.reject();
+  }
+}
+
+export async function dislikeAritlce(uid: number): Promise<void> {
+  const response = await fetch(`/api/articles/${uid}/dislike`, {
+    method: "POST",
+  });
   if (!response.ok) {
     return Promise.reject();
   }

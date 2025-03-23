@@ -19,3 +19,5 @@ articleRouter.get("/", safe(bound(controller, "getMany")));
 articleRouter.post("/", safe(bound(controller, "post")));
 articleRouter.patch("/:id", safe(bound(controller, "patch")));
 articleRouter.delete("/:id", safe(bound(controller, "delete")));
+articleRouter.post("/:id/like", safe(bound(controller, "like")));
+articleRouter.post("/:id/dislike", safe(bound(controller, "dislike")));

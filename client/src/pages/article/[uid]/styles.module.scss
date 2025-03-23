@@ -69,3 +69,13 @@
     text-align: center;
   }
 }
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  height: 50px;
+
+  button {
+    height: 100%;
+  }
+}

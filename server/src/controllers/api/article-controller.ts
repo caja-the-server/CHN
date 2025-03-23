@@ -179,4 +179,30 @@ export class ArticleController {
     await this.articleService.delete(userUid, params.id);
     res.status(StatusCodes.CREATED).end();
   }
+
+  public async like(req: Request, res: Response, next: NextFunction) {
+    const paramsSchema = ArticleController.paramsSchema;
+    const paramsParseResult = await paramsSchema.safeParseAsync(req.params);
+    if (!paramsParseResult.success) {
+      next();
+      return;
+    }
+    const params = paramsParseResult.data;
+
+    await this.articleService.like(params.id);
+    res.status(StatusCodes.CREATED).end();
+  }
+
+  public async dislike(req: Request, res: Response, next: NextFunction) {
+    const paramsSchema = ArticleController.paramsSchema;
+    const paramsParseResult = await paramsSchema.safeParseAsync(req.params);
+    if (!paramsParseResult.success) {
+      next();
+      return;
+    }
+    const params = paramsParseResult.data;
+
+    await this.articleService.dislike(params.id);
+    res.status(StatusCodes.CREATED).end();
+  }
 }

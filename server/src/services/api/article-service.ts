@@ -13,7 +13,7 @@ import {
 import { dateStringToISO } from "@utils/date-string-to-iso";
 import { ArticleValue } from "@value-objects/article-values";
 import { CategoryValue } from "@value-objects/category-values";
-import { and, count, desc, eq, isNull, SQL } from "drizzle-orm";
+import { and, count, desc, eq, isNull, sql, SQL } from "drizzle-orm";
 
 export type ArticleServiceOptions = {
   maxQueryLimit: number;
@@ -47,6 +47,8 @@ export class ArticleService {
           title: articleTable.title,
           subtitle: articleTable.subtitle,
           content: articleTable.content,
+          likeCount: articleTable.likeCount,
+          dislikeCount: articleTable.dislikeCount,
           createdAt: articleTable.createdAt,
           updatedAt: articleTable.updatedAt,
         })
@@ -161,6 +163,8 @@ export class ArticleService {
         thumbnailCaption: articleTable.thumbnailCaption,
         title: articleTable.title,
         subtitle: articleTable.subtitle,
+        likeCount: articleTable.likeCount,
+        dislikeCount: articleTable.dislikeCount,
         createdAt: articleTable.createdAt,
         updatedAt: articleTable.updatedAt,
       })
@@ -316,5 +320,23 @@ export class ArticleService {
     if (header.affectedRows === 0) {
       return Promise.reject(new ArticleNotFoundError());
     }
+  }
+
+  public async like(articleUid: number): Promise<void> {
+    await this.database
+      .update(articleTable)
+      .set({
+        likeCount: sql`${articleTable.likeCount} + 1`,
+      })
+      .where(eq(articleTable.uid, articleUid));
+  }
+
+  public async dislike(articleUid: number): Promise<void> {
+    await this.database
+      .update(articleTable)
+      .set({
+        dislikeCount: sql`${articleTable.dislikeCount} + 1`,
+      })
+      .where(eq(articleTable.uid, articleUid));
   }
 }
