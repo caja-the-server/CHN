@@ -20,6 +20,10 @@ const envSchema = z
     DATABASE_PORT: z.coerce.number(),
     DATABASE_NAME: z.string(),
     DATABASE_CONNECTION_LIMIT: z.coerce.number(),
+
+    // TEMP START
+    TEMP_TOKEN: z.string(),
+    // TEMP END
   })
   .readonly();
 

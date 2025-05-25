@@ -34,7 +34,6 @@ export const articleTable = mysqlTable("articles", {
   subtitle: varchar({ length: conf.subtitleConstraints.max }).notNull(),
   content: text().notNull(),
   likeCount: int({ unsigned: true }).notNull().default(0),
-  dislikeCount: int({ unsigned: true }).notNull().default(0),
   createdAt,
   updatedAt,
 });

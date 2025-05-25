@@ -111,12 +111,3 @@ export async function likeAritlce(uid: number): Promise<void> {
     return Promise.reject();
   }
 }
-
-export async function dislikeAritlce(uid: number): Promise<void> {
-  const response = await fetch(`/api/articles/${uid}/dislike`, {
-    method: "POST",
-  });
-  if (!response.ok) {
-    return Promise.reject();
-  }
-}

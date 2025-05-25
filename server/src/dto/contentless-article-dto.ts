@@ -15,7 +15,6 @@ export class ContentlessArticleDTO {
   public readonly title: string;
   public readonly subtitle: string;
   public readonly likeCount: number;
-  public readonly dislikeCount: number;
   public readonly createdAt: string;
   public readonly updatedAt: string;
 
@@ -31,7 +30,6 @@ export class ContentlessArticleDTO {
     this.title = props.title;
     this.subtitle = props.subtitle;
     this.likeCount = props.likeCount;
-    this.dislikeCount = props.dislikeCount;
     this.createdAt = props.createdAt;
     this.updatedAt = props.updatedAt;
   }

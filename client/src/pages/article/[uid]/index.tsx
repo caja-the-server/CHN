@@ -3,12 +3,7 @@ import "./styles.scss";
 
 import { QuillEditor } from "@components/QuillEditor";
 import { NotFound } from "@pages/404";
-import {
-  Article,
-  dislikeAritlce,
-  getArticle,
-  likeAritlce,
-} from "@services/article-service";
+import { Article, getArticle, likeAritlce } from "@services/article-service";
 import { getTimeData } from "@utils/time";
 import Quill from "quill";
 import { FC, useCallback, useEffect, useRef, useState } from "react";
@@ -66,34 +61,16 @@ export const ViewArticle: FC = () => {
   }, [article]);
 
   const handleLikeButtonClick = useCallback(async () => {
-    const reactedArticlesKey = "reactedArticles";
-    const reactedArticles = JSON.parse(
-      localStorage.getItem(reactedArticlesKey) ?? "[]"
+    const likedArticlesKey = "likedArticles";
+    const likedArticles = JSON.parse(
+      localStorage.getItem(likedArticlesKey) ?? "[]"
     ) as number[];
-    if (reactedArticles.includes(uid!)) {
+    if (likedArticles.includes(uid!)) {
       return;
     }
     await likeAritlce(uid!);
-    reactedArticles.push(uid!);
-    localStorage.setItem(reactedArticlesKey, JSON.stringify(reactedArticles));
-    try {
-      const article = await getArticle(uid!);
-      setArticle({ state: "SET", data: article });
-    } catch {
-      setArticle({ state: "NOT_FOUND" });
-    }
-  }, [uid]);
-  const handleDislikeButtonClick = useCallback(async () => {
-    const reactedArticlesKey = "reactedArticles";
-    const reactedArticles = JSON.parse(
-      localStorage.getItem(reactedArticlesKey) ?? "[]"
-    ) as number[];
-    if (reactedArticles.includes(uid!)) {
-      return;
-    }
-    await dislikeAritlce(uid!);
-    reactedArticles.push(uid!);
-    localStorage.setItem(reactedArticlesKey, JSON.stringify(reactedArticles));
+    likedArticles.push(uid!);
+    localStorage.setItem(likedArticlesKey, JSON.stringify(likedArticles));
     try {
       const article = await getArticle(uid!);
       setArticle({ state: "SET", data: article });
@@ -146,13 +123,7 @@ export const ViewArticle: FC = () => {
                 className={styles["like-button"]}
                 onClick={handleLikeButtonClick}
               >
-                <span>좋아요 {article.data.likeCount}</span>
-              </button>
-              <button
-                className={styles["dislike-button"]}
-                onClick={handleDislikeButtonClick}
-              >
-                <span>싫어요 {article.data.dislikeCount}</span>
+                <span>공감 {article.data.likeCount}</span>
               </button>
             </footer>
           </article>

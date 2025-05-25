@@ -48,7 +48,6 @@ export class ArticleService {
           subtitle: articleTable.subtitle,
           content: articleTable.content,
           likeCount: articleTable.likeCount,
-          dislikeCount: articleTable.dislikeCount,
           createdAt: articleTable.createdAt,
           updatedAt: articleTable.updatedAt,
         })
@@ -164,7 +163,6 @@ export class ArticleService {
         title: articleTable.title,
         subtitle: articleTable.subtitle,
         likeCount: articleTable.likeCount,
-        dislikeCount: articleTable.dislikeCount,
         createdAt: articleTable.createdAt,
         updatedAt: articleTable.updatedAt,
       })
@@ -327,15 +325,6 @@ export class ArticleService {
       .update(articleTable)
       .set({
         likeCount: sql`${articleTable.likeCount} + 1`,
-      })
-      .where(eq(articleTable.uid, articleUid));
-  }
-
-  public async dislike(articleUid: number): Promise<void> {
-    await this.database
-      .update(articleTable)
-      .set({
-        dislikeCount: sql`${articleTable.dislikeCount} + 1`,
       })
       .where(eq(articleTable.uid, articleUid));
   }
