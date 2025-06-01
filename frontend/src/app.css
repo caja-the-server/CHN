@@ -1,0 +1,7 @@
+html {
+  @apply font-gothic-a1 bg-bg text-text;
+}
+
+body {
+  @apply flex flex-col w-screen max-w-300 min-h-screen mx-auto;
+}
